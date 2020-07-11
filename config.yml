@@ -2,3 +2,4 @@ logging:
   level: INFO
   loggers:
     dwws: DEBUG
+template: Hello, %s!
