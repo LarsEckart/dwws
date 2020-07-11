@@ -1,0 +1,41 @@
+plugins {
+    id "java"
+    id "application"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
+}
+
+application {
+    mainClassName = "dwws.App"
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs.add("-Xlint:all")
+    options.compilerArgs.add("--enable-preview")
+
+    options.incremental = true
+}
+
+test {
+    useJUnitPlatform()
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+    jvmArgs("-XX:+ShowCodeDetailsInExceptionMessages")
+    jvmArgs("--enable-preview")
+}
+
+task stage(type: Copy, dependsOn: [assemble]) {
+    from 'build/libs'
+    include 'dwws.jar'
+    into project.rootDir
+    rename {
+        'dwws.jar'
+    }
+}
+stage.mustRunAfter(clean)
