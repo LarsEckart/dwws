@@ -3,3 +3,7 @@ logging:
   loggers:
     dwws: DEBUG
 template: Hello, %s!
+server:
+  type: simple
+  connector:
+    type: http
