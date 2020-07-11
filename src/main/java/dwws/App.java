@@ -22,7 +22,7 @@ public class App extends Application<AppConfiguration> {
 
   @Override
   public void run(final AppConfiguration configuration, final Environment environment) {
-    final HelloWorldResource resource =
+    var resource =
         new HelloWorldResource(configuration.getTemplate(), configuration.getDefaultName());
     environment.jersey().register(resource);
   }
