@@ -25,6 +25,9 @@
             <transformer>
               <mainClass>${mainClass}</mainClass>
             </transformer>
+            <transformer>
+              <resource>META-INF/cxf/bus-extensions.txt</resource>
+            </transformer>
           </transformers>
           <filters>
             <filter>
@@ -52,7 +55,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
+        <version>3.8.1</version>
         <configuration>
           <release>14</release>
           <compilerArgs>
@@ -130,7 +133,7 @@
     </dependencies>
   </dependencyManagement>
   <properties>
-    <dropwizard.version>2.0.11</dropwizard.version>
+    <dropwizard.version>2.0.12</dropwizard.version>
     <mainClass>dwws.App</mainClass>
     <java.version>14</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
